@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="drawing_technical_view_form" model="ir.ui.view">
+        <field name="name">drawing.technical.view.form</field>
+        <field name="model">drawing.technical</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_created"/>
+                        <field name="attachment" filename="attachment_filename"/>
+                        <field name="attachment_filename" invisible="1"/>
+                        <field name="description" widget="text"/>
+                        <field name="product_id" options="{'no_create': True}"/>
+                        <!-- <field name="order_line_id" options="{'no_create': True}" domain="[('product_id', '=', product_id)]"/> -->
+                         <field name="order_line_id">
+                            <tree>
+                                <field name="order_id" optional="show"/>
+                                <field name="product_template_id" optional="show"/>
+                                <field name="name" optional="show"/>
+                            </tree>
+                         </field>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="drawing_technical_view_tree" model="ir.ui.view">
+        <field name="name">drawing.technical.view.tree</field>
+        <field name="model">drawing.technical</field>
+        <field name="arch" type="xml">
+            <tree string="Technical Drawings">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="order_line_id" widget="many2may_tags"/>
+                <field name="date_created"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="drawing_technical_action" model="ir.actions.act_window">
+        <field name="name">Drawing Technical</field>
+        <field name="res_model">drawing.technical</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <div class="o_view_nocontent_smiling_face">
+                <p>
+                    You can create and manage technical drawings related to your sales orders here.
+                </p>
+                <p>
+                    Click on "Create" to add a new drawing.
+                </p>
+            </div>
+        </field>
+    </record>
+
+</odoo>

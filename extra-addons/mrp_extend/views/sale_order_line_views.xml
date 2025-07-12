@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form/group" position="inside">
+                <group>
+                    <field name="technical_drawing_ids" widget="one2many_list">
+                        <tree editable="bottom">
+                            <field name="name" />
+                            <field name="product_id" />
+                            <field name="date_created" />
+                            <field name="attachment" widget="file" />
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree" position="inside">
+                <field name="technical_drawing_ids" widget="many2many_tags" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mrp_product_wiz_view_form" model="ir.ui.view">
+        <field name="name">mrp.product.wiz.view.form</field>
+        <field name="model">mrp.product.wiz</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="file_import" widget="binary" filename="file_name" />
+                        <field name="file_name" invisible="1"/>
+                        <button string="Download template" name="action_download_template" type="object" icon="fa-download" />
+                    </group>
+                    <footer>
+                        <button string="Import" name="action_import" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_import_sale_order_line_wizard" model="ir.actions.act_window">
+        <field name="name">Product lines</field>
+        <field name="res_model">mrp.product.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

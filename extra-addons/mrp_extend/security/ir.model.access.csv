@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_drawing_technical,drawing.technical,model_drawing_technical,base.group_user,1,1,1,1
+access_mrp_product_wiz,mrp.product.wiz,model_mrp_product_wiz,base.group_user,1,1,1,1
